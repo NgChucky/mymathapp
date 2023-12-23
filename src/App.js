@@ -1,25 +1,27 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { MathJaxContext } from 'better-react-mathjax';
+import MainContent from './MainContent.js';
+import Animations from './animations.js';
 
 function App() {
+	const mathJaxConfig = {
+		tex: {
+			inlineMath: [['$', '$']],
+			displayMath: [['$$', '$$']]
+		}
+	};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+	<MathJaxContext 
+		version={3}  
+		src="/MathJax-master/es5/tex-mml-chtml.js" 
+		config={mathJaxConfig}
+	>
+    	<div className='App'>
+			<Animations />
+			<MainContent />
+    	</div>
+	</MathJaxContext>
   );
 }
-
 export default App;
