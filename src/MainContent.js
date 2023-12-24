@@ -30,8 +30,8 @@ function MainContent()
 	const style3 = {
 		position: 'relative',
 		width : '96%',
-		height : '86.5%',
-		padding: '0% 2% 0% 2%',
+		height : '83.5%',
+		padding: '2% 2% 0% 2%',
 		overflowX: 'scroll',
 		overflowY: 'scroll'
 	};
@@ -87,10 +87,10 @@ function MainContent()
 				if (element.type === "plain" && array[index+1]?.type === "inline") {
 					skip = 0;
 					return (
-						<span key={`${element.index}`}>
-    						{element.text}
-    						<MathJax.Text text={array[index+1]?.text}/>
-						</span>
+						<React.Fragment style={{display: "inline"}} key={`${element.index}`}>
+							{element.text}
+							<MathJax.Text text={array[index + 1]?.text} />
+						</React.Fragment>
 					);
 				}
 				else {
@@ -109,7 +109,7 @@ function MainContent()
 				}
 			}
 		});
-		return elements;
+		return <>{elements}</>;
 	};	  
 		
 
@@ -127,9 +127,7 @@ function MainContent()
         		<h1>Math Practice</h1>
       		</div>
       		<div className="content" contentEditable={true} style={style3}>
-				<p>
-					{renderMathJax(content)}
-				</p>
+				{renderMathJax(content)}
 			</div>
 		</div>
 	);
