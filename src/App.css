@@ -4,17 +4,6 @@ body {
   overflow: hidden;
 }
 
-.main-heading {
-  margin-top: 0%;
-  position: relative;
-  text-align: center;
-  font-size: 15px;
-}
-.mx {
-  overflow-x: 'auto';
-  overflow-y: 'scroll'
-}
-
 .App .Animations {
   position: fixed;
   top: 0;

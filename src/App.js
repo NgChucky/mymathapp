@@ -1,27 +1,27 @@
 import React from 'react';
 import './App.css';
-import { MathJaxContext } from 'better-react-mathjax';
+import MathJax from 'react-mathjax2';
 import MainContent from './MainContent.js';
 import Animations from './animations.js';
 
 function App() {
-	const mathJaxConfig = {
-		tex: {
-			inlineMath: [['$', '$']],
-			displayMath: [['$$', '$$']]
-		}
-	};
+  const mathJaxConfig = {
+    tex2jax: {
+      inlineMath: [['$', '$']],
+      displayMath: [['$$', '$$']],
+      processEscapes: true,
+    },
+    showProcessingMessages: false,
+    messageStyle: 'none'
+  };
+
   return (
-	<MathJaxContext 
-		version={3}  
-		src="/MathJax-master/es5/tex-mml-chtml.js" 
-		config={mathJaxConfig}
-	>
-    	<div className='App'>
-			<Animations />
-			<MainContent />
-    	</div>
-	</MathJaxContext>
+    <MathJax.Context input='tex' onLoad={() => console.log("Loaded MathJax script!")} src="/MathJax-2.7.9/MathJax.js" options={mathJaxConfig}>
+      <div className='App'>
+        <Animations />
+        <MainContent />
+      </div>
+    </MathJax.Context>
   );
 }
 export default App;
